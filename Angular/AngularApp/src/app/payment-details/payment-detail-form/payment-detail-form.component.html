@@ -1,0 +1,43 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Payment Details</h1>
+</div>
+
+<div style="display: flex; margin: auto; padding-left: 30%;">
+
+    <form novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit(form)" class="text-center">
+        <input type="hidden" name="paymentDetailId" [value]="service.formData.paymentDetailId" />
+        <div class="form-group">
+            <label>Name</label>
+            <input class="form-control form-control-lg" placeholder="Full Name" name="cardOwnerName"
+                #cardOwnerName="ngModel" [(ngModel)]="service.formData.cardOwnerName"
+                required [class.invalid]="cardOwnerName.invalid &#038;&#038; cardOwnerName.touched">
+        </div>
+        <div class="form-group">
+            <label>Card Number</label>
+            <input class="form-control form-control-lg" placeholder="16 Digit Card Number" name="cardNumber"
+                #cardNumber="ngModel" [(ngModel)]="service.formData.cardNumber"
+                required maxlength="16" minlength="16" [class.invalid]="cardNumber.invalid &#038;&#038; cardNumber.touched">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>CVV</label>
+                <input type="password" class="form-control form-control-lg" placeholder="Security Code" name="securityCode"
+                    #securityCode="ngModel" [(ngModel)]="service.formData.securityCode"
+                    required maxlength="3" minlength="3" [class.invalid]="securityCode.invalid &#038;&#038; securityCode.touched">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Expiry Date</label>
+                <input class="form-control form-control-lg" placeholder="MM/YY" name="expirationDate"
+                    #expirationDate="ngModel" [(ngModel)]="service.formData.expirationDate"
+                    required maxlength="5" minlength="5" [class.invalid]="expirationDate.invalid &#038;&#038; expirationDate.touched">
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-info btn-lg btn-block" type="submit" [disabled]="form.invalid">Submit</button>
+            <button class="btn btn-info btn-lg btn-block" type="button" routerLink="records">View Records</button>
+        </div>
+        
+    </form>
+
+</div>
+

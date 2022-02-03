@@ -1,0 +1,30 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center"><b>Records</b></h1>
+</div>
+<div class="row" style="display: flex; margin: auto; padding-left: 30%;">
+
+    <div class="col-md-7">
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Card Number</th>
+                    <th>Expiry Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tr *ngFor="let pd of service.list" routerLink=''>
+                <td (click)="populateForm(pd)">{{pd.cardOwnerName}}</td>
+                <td (click)="populateForm(pd)">{{pd.cardNumber}}</td>
+                <td (click)="populateForm(pd)">{{pd.expirationDate}}</td>
+                <td>
+                    <!-- <i class="fas fa-pen" style="margin-right: -10; padding-right: 18%; color: darkgrey;"></i> -->
+                    <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.paymentDetailId)"></i>
+                </td>
+            </tr>
+            <div class="form-group">
+                <button class="btn btn-info btn-lg btn-block" type="button" routerLink="">Back</button>
+            </div>
+        </table>
+    </div>
+</div>
